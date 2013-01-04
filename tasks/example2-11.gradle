@@ -1,0 +1,8 @@
+task setupDatabaseTests << {
+	// This is the task's existing schema
+	println 'load test data'
+}
+
+setupDatabaseTests.doFirst {
+	println 'create schema'
+}

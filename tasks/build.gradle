@@ -1,0 +1,31 @@
+
+// Make sure to pay careful attention to the left shift '<<' doLast() operator!
+/*
+task hello << {
+	println 'hello, world'
+}
+*/
+
+task hello
+
+hello << {
+	print 'hello, '
+}
+
+hello << {
+	println 'world'
+}
+
+// Noting the order of tasks
+task initializeDatabase
+initializeDatabase << { println 'connect to database' }
+initializeDatabase << { println 'update database schema' }
+// Because this closure is defined without the left shift operator,
+// it defines the configuration of the task to be run during the 
+// configuration lifecycle phase
+// This run before the execution phase.
+//    initializeDatabase { println 'configuring database connection' }
+
+// Note that you can append configuration blocks:
+initializeDatabase { print 'configuring ' }
+initializeDatabase { println 'database connection' }

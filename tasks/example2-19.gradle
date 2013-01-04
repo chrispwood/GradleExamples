@@ -1,0 +1,16 @@
+task createSchema << {
+	println 'create database schema'
+}
+
+task loadTestData(dependsOn: createSchema) << {
+	println 'load test data'
+}
+
+loadTestData.onlyIf {
+	System.properties['load.data'] == 'true'
+}
+
+/* Two invocations:
+	gradle -b example2-19.gradle loadTestData
+	gradle -b example2-19.gradle -Dload.data=true loadTestData
+*/
