@@ -1,0 +1,12 @@
+task helloWorld << {
+	println 'hello, world'
+}
+
+task hello << {
+	print 'hello, '
+}
+
+// If you want to run both hello and world, start with the destination - i.e. world.
+task world(dependsOn: hello) << {
+	println 'world'
+}
