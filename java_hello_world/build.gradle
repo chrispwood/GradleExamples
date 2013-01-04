@@ -1,0 +1,4 @@
+apply plugin: 'java'
+
+// to build the java file, run `gradle build`
+// to run the built java class run `java -cp build/classes/main/ org.gradle.example.simple.HelloWorld
